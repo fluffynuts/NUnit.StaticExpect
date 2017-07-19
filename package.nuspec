@@ -1,0 +1,36 @@
+<package>
+  <metadata>
+    <id>NUnit.StaticExpect</id>
+    <version>1.0.0</version>
+    <title>NUnit.StaticExpect</title>
+    <authors>Davyd McColl</authors>
+    <owners></owners>
+    <description>
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:
+    using static NUnit.StaticExpect.Expectations;
+    // now you can use Expect()
+    </description>
+    <releaseNotes></releaseNotes>
+    <summary>
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:
+    using static NUnit.StaticExpect.Expectations;
+    // now you can use Expect()
+    </summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/fluffynuts/NUnit.StaticExpect</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/fluffynuts/NUnit.StaticExpect/blob/master/LICENSE</licenseUrl>
+    <copyright>Copyright  2017</copyright>
+    <dependencies>
+      <group targetFramework="net40">
+        <dependency id="NUnit" version="[3.7.1,]" />
+      </group>
+    </dependencies>
+    <references></references>
+    <tags></tags>
+  </metadata>
+  <files>
+    <file src="src\NUnit.StaticExpect\bin\Debug\NUnit.StaticExpect.dll" target="lib\net45" />
+  </files>
+</package>
