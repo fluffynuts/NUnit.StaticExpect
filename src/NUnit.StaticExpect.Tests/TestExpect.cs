@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using static NUnit.StaticExpect.NetStd.Expectations;
+using static NUnit.StaticExpect.Expectations;
 using static PeanutButter.RandomGenerators.RandomValueGen;
 
 namespace NUnit.StaticExpect.Tests

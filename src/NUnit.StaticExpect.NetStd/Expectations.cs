@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
-namespace NUnit.StaticExpect.NetStd
+namespace NUnit.StaticExpect
 {
     public static class Expectations
     {

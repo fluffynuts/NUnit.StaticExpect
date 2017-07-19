@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f2bbff15-2d3b-4cdc-8634-0b91ffb527b8</ProjectGuid>
+    <ProjectGuid>{F2BBFF15-2D3B-4CDC-8634-0B91FFB527B8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NUnit.StaticExpect.TestPackage</RootNamespace>
@@ -30,24 +30,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnit.StaticExpect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.StaticExpect.1.0.0\lib\net45\NUnit.StaticExpect.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="TestUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

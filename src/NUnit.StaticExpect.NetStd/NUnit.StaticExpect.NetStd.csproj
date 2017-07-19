@@ -14,6 +14,10 @@ And then use Expect() like you would have, without inheriting from AssertionHelp
     <PackageTags>nunit, expect</PackageTags>
     <PackageReleaseNotes>This is alpha</PackageReleaseNotes>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>NUnit.StaticExpect</PackageId>
+    <Product>NUnit.StaticExpect</Product>
+    <AssemblyName>NUnit.StaticExpect</AssemblyName>
+    <RootNamespace>NUnit.StaticExpect</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
