@@ -44,7 +44,7 @@
       <HintPath>..\packages\PeanutButter.TestUtils.Generic.1.2.162\lib\net45\PeanutButter.TestUtils.Generic.dll</HintPath>
     </Reference>
     <Reference Include="PeanutButter.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PeanutButter.Utils.1.2.162\lib\net45\PeanutButter.Utils.dll</HintPath>
+      <HintPath>..\packages\PeanutButter.Utils.1.2.183\lib\net45\PeanutButter.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -70,9 +70,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NUnit.StaticExpect.NetStd\NUnit.StaticExpect.NetStd.csproj">
-      <Project>{0882b8db-3345-45a3-9939-44c6a9861657}</Project>
-      <Name>NUnit.StaticExpect.NetStd</Name>
+    <ProjectReference Include="..\NUnit.StaticExpect\NUnit.StaticExpect.csproj">
+      <Project>{04166088-e42d-49d2-8c86-11b3b7013f2e}</Project>
+      <Name>NUnit.StaticExpect</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpectationsDoes.cs" />
     <Compile Include="Expectations.cs" />
+    <Compile Include="ExpectationsHas.cs" />
+    <Compile Include="ExpectationsIs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

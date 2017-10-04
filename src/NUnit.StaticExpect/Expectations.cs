@@ -4,7 +4,7 @@ using NUnit.Framework.Constraints;
 
 namespace NUnit.StaticExpect
 {
-    public static class Expectations
+    public static partial class Expectations
     {
         /// <summary>
         /// Asserts that a condition is true. If the condition is false the method throws

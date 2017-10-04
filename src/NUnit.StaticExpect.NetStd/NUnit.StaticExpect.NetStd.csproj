@@ -21,6 +21,12 @@ And then use Expect() like you would have, without inheriting from AssertionHelp
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\NUnit.StaticExpect\Expectations.cs" Link="Expectations.cs" />
+    <Compile Include="..\NUnit.StaticExpect\ExpectationsHas.cs" Link="ExpectationsHas.cs" />
+    <Compile Include="..\NUnit.StaticExpect\ExpectationsIs.cs" Link="ExpectationsIs.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="nunit" Version="3.7.1" />
   </ItemGroup>
 
