@@ -1,20 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <package>
   <metadata>
     <id>NUnit.StaticExpect</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>NUnit.StaticExpect</title>
     <authors>Davyd McColl</authors>
-    <owners></owners>
-    <description>
-    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:
-    using static NUnit.StaticExpect.Expectations;
-    // now you can use Expect()
+    <owners/>
+    <description>&#xD;
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;
+    using static NUnit.StaticExpect.Expectations;&#xD;
+    // now you can use Expect()&#xD;
     </description>
-    <releaseNotes></releaseNotes>
-    <summary>
-    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:
-    using static NUnit.StaticExpect.Expectations;
-    // now you can use Expect()
+    <releaseNotes/>
+    <summary>&#xD;
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;
+    using static NUnit.StaticExpect.Expectations;&#xD;
+    // now you can use Expect()&#xD;
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/fluffynuts/NUnit.StaticExpect</projectUrl>
@@ -24,17 +25,17 @@
     <copyright>Copyright  2017</copyright>
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="NUnit" version="[3.7.1,]" />
+        <dependency id="NUnit" version="[3.7.1,]"/>
       </group>
       <group targetFramework="netstandard1.4">
-        <dependency id="NUnit" version="[3.7.1,]" />
+        <dependency id="NUnit" version="[3.7.1,]"/>
       </group>
     </dependencies>
-    <references></references>
-    <tags></tags>
+    <references/>
+    <tags/>
   </metadata>
   <files>
-    <file src="src\NUnit.StaticExpect\bin\Debug\NUnit.StaticExpect.dll" target="lib\net45" />
-    <file src="src\NUnit.StaticExpect.NetStd\bin\Debug\netstandard1.4\NUnit.StaticExpect.dll" target="lib\netstandard1.4" />
+    <file src="src\NUnit.StaticExpect\bin\Debug\NUnit.StaticExpect.dll" target="lib\net45"/>
+    <file src="src\NUnit.StaticExpect.NetStd\bin\Debug\netstandard1.4\NUnit.StaticExpect.dll" target="lib\netstandard1.4"/>
   </files>
 </package>
