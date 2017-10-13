@@ -1,20 +1,18 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Diagnostics.CodeAnalysis;
-
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 using NUnit.TestUtilities.Comparers;
-
 using static NUnit.StaticExpect.Expectations;
 
 namespace NUnit.StaticExpect.Tests
 {
     [SuppressMessage("Microsoft.Design", "CS0618:Obsolete")]
-    class TestAssertionHelper_OriginalTests
+    [TestFixture]
+    public class OriginalAssertionHelperTests
     {
-        class AssertionHelperTests
+        [TestFixture]
+        public class TestAssertionHelper
         {
             private static readonly string DEFAULT_PATH_CASE = Path.DirectorySeparatorChar == '\\' ? "ignorecase" : "respectcase";
 

@@ -60,10 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="TestAssertionHelper_OriginalTests.cs" />
+    <Compile Include="OriginalAssertionHelperTests.cs" />
     <Compile Include="TestExpect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestExpect_AssertionHelperCompatibility.cs" />
+    <Compile Include="TestAssertionHelperCompatibility.cs" />
     <Compile Include="TestUtilities_Comparers\AlwaysEqualComparer.cs" />
     <Compile Include="TestUtilities_Comparers\GenericComparer.cs" />
     <Compile Include="TestUtilities_Comparers\GenericComparison.cs" />

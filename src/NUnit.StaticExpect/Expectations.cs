@@ -1,6 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
+// ReSharper disable ParameterOnlyUsedForPreconditionCheck.Global
+// ReSharper disable UnusedMember.Global
 
 namespace NUnit.StaticExpect
 {
