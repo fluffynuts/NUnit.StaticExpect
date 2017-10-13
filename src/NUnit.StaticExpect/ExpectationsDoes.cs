@@ -20,7 +20,7 @@ namespace NUnit.StaticExpect
         /// Returns a new CollectionContainsConstraint checking for the
         /// presence of a particular object in the collection.
         /// </summary>
-        public static CollectionContainsConstraint Contain(object expected)
+        public static SomeItemsConstraint Contain(object expected)
         {
             return Does.Contain(expected);
         }

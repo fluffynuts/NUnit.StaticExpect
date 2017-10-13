@@ -176,7 +176,7 @@ namespace NUnit.StaticExpect
         //
         // Remarks:
         //     from must be less than or equal to true
-        public static Func<IComparable, IComparable, RangeConstraint> InRange =>
+        public static Func<Object, Object, RangeConstraint> InRange =>
             Is.InRange;
 
         //
@@ -227,38 +227,6 @@ namespace NUnit.StaticExpect
         //     under an expected path after canonicalization.
         public static Func<string, SamePathOrUnderConstraint> SamePathOrUnder =>
             Is.SamePathOrUnder;
-
-        //        //
-        // Summary:
-        //     Returns a constraint that succeeds if the actual value contains the substring
-        //     supplied as an argument.
-        [Obsolete("Deprecated, use Does.Contain")]
-        public static Func<string, SubstringConstraint> StringContaining =>
-            Is.StringContaining;
-
-        //
-        // Summary:
-        //     Returns a constraint that succeeds if the actual value ends with the substring
-        //     supplied as an argument.
-        [Obsolete("Deprecated, use Does.EndWith")]
-        public static Func<string, EndsWithConstraint> StringEnding =>
-            Is.StringEnding;
-
-        //
-        // Summary:
-        //     Returns a constraint that succeeds if the actual value matches the regular expression
-        //     supplied as an argument.
-        [Obsolete("Deprecated, use Does.Match")]
-        public static Func<string, RegexConstraint> StringMatching =>
-            Is.StringMatching;
-
-        //
-        // Summary:
-        //     Returns a constraint that succeeds if the actual value starts with the substring
-        //     supplied as an argument.
-        [Obsolete("Deprecated, use Does.StartWith")]
-        public static Func<string, StartsWithConstraint> StringStarting =>
-            Is.StringStarting;
 
         //
         // Summary:

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NUnit.StaticExpect.Tests</RootNamespace>
     <AssemblyName>NUnit.StaticExpect.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,8 +34,8 @@
     <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PeanutButter.RandomGenerators, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PeanutButter.RandomGenerators.1.2.162\lib\net45\PeanutButter.RandomGenerators.dll</HintPath>
@@ -51,9 +51,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,8 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="TestAssertionHelper_OriginalTests.cs" />
     <Compile Include="TestExpect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestExpect_AssertionHelperCompatibility.cs" />
+    <Compile Include="TestUtilities_Comparers\AlwaysEqualComparer.cs" />
+    <Compile Include="TestUtilities_Comparers\GenericComparer.cs" />
+    <Compile Include="TestUtilities_Comparers\GenericComparison.cs" />
+    <Compile Include="TestUtilities_Comparers\GenericEqualityComparer.cs" />
+    <Compile Include="TestUtilities_Comparers\GenericEqualityComparison.cs" />
+    <Compile Include="TestUtilities_Comparers\ObjectComparer.cs" />
+    <Compile Include="TestUtilities_Comparers\ObjectEqualityComparer.cs" />
+    <Compile Include="TestUtilities_Comparers\ObjectToStringComparer.cs" />
+    <Compile Include="TestUtilities_Comparers\TestComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -74,6 +83,9 @@
       <Project>{04166088-e42d-49d2-8c86-11b3b7013f2e}</Project>
       <Name>NUnit.StaticExpect</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

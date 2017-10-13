@@ -87,7 +87,7 @@ namespace NUnit.StaticExpect
         /// Returns a new CollectionContainsConstraint checking for the
         /// presence of a particular object in the collection.
         /// </summary>
-        public static Func<object, CollectionContainsConstraint> Member =>
+        public static Func<object, EqualConstraint> Member =>
             Has.Member;
     }
 }
