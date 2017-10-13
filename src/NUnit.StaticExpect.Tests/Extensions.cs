@@ -58,7 +58,6 @@ namespace NUnit.StaticExpect.Tests
         {
             if (reference.IsGenericParameter && type.IsGenericParameter)
             {
-                Console.Write($"{reference.GenericParameterPosition} : {type.GenericParameterPosition}");
                 return reference.GenericParameterPosition == type.GenericParameterPosition;
             }
 
