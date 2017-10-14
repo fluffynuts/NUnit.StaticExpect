@@ -59,14 +59,15 @@ namespace NUnit.StaticExpect.Tests
 
                     // Pre-Assert
                     var ex1 = Assert.Throws<AssertionException>(
-                        () => Assert.That(collection, Has.Exactly(1).EqualTo(seek))
+                        () => AssertionHelper.Expect(collection, AssertionHelper.Exactly(1).EqualTo(seek))
                     );
                     var ex2 = Assert.Throws<AssertionException>(
-                        () => AssertionHelper.Expect(collection, AssertionHelper.Exactly(1).EqualTo(seek))
+                        () => Expectations.Expect(collection, Expectations.Exactly(1).EqualTo(seek))
                     );
                     // Act
 
                     // Assert
+                    Assert.That(ex1.Message, Is.EqualTo(ex1.Message));
                     Assert.That(ex1.Message, Is.EqualTo(ex2.Message));
                 }
 
@@ -83,13 +84,17 @@ namespace NUnit.StaticExpect.Tests
 
                     // Act
                     Assert.That(() =>
-                            Assert.That(collection, Has.Exactly(1).EqualTo(seek)),
-                        Throws.Nothing
-                    );
-                    Assert.That(() =>
                             AssertionHelper.Expect(
                                 collection,
                                 AssertionHelper.Exactly(1).EqualTo(seek)
+                            ),
+                        Throws.Nothing
+                    );
+
+                    Assert.That(() =>
+                            Expectations.Expect(
+                                collection,
+                                Expectations.Exactly(1).EqualTo(seek)
                             ),
                         Throws.Nothing
                     );
@@ -120,11 +125,12 @@ namespace NUnit.StaticExpect.Tests
 
                     // Act
                     var ex1 = Assert.Throws<AssertionException>(() =>
-                        Assert.That(check, Is.InRange(min, max)));
-                    var ex2 = Assert.Throws<AssertionException>(() =>
                         AssertionHelper.Expect(check, (new AssertionHelper()).InRange(min, max)));
+                    var ex2 = Assert.Throws<AssertionException>(() =>
+                        Expectations.Expect(check, Expectations.InRange(min, max)));
 
                     // Assert
+                    Assert.That(ex1.Message, Is.EqualTo(ex1.Message));
                     Assert.That(ex1.Message, Is.EqualTo(ex2.Message));
                 }
 
@@ -140,11 +146,10 @@ namespace NUnit.StaticExpect.Tests
 
                     // Act
                     Assert.That(() =>
-                            Assert.That(check, Is.InRange(min, max)),
-                        Throws.Nothing
-                    );
-                    Assert.That(() =>
                             AssertionHelper.Expect(check, (new AssertionHelper()).InRange(min, max)),
+                        Throws.Nothing);
+                    Assert.That(() =>
+                            Expectations.Expect(check, Expectations.InRange(min, max)),
                         Throws.Nothing);
 
 
