@@ -2,20 +2,20 @@
 <package>
   <metadata>
     <id>NUnit.StaticExpect</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>NUnit.StaticExpect</title>
     <authors>Davyd McColl</authors>
     <owners/>
-    <description>&#xD;&#xD;
-    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;&#xD;
-    using static NUnit.StaticExpect.Expectations;&#xD;&#xD;
-    // now you can use Expect()&#xD;&#xD;
+    <description>&#xD;&#xD;&#xD;
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;&#xD;&#xD;
+    using static NUnit.StaticExpect.Expectations;&#xD;&#xD;&#xD;
+    // now you can use Expect()&#xD;&#xD;&#xD;
     </description>
     <releaseNotes/>
-    <summary>&#xD;&#xD;
-    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;&#xD;
-    using static NUnit.StaticExpect.Expectations;&#xD;&#xD;
-    // now you can use Expect()&#xD;&#xD;
+    <summary>&#xD;&#xD;&#xD;
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;&#xD;&#xD;
+    using static NUnit.StaticExpect.Expectations;&#xD;&#xD;&#xD;
+    // now you can use Expect()&#xD;&#xD;&#xD;
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/fluffynuts/NUnit.StaticExpect</projectUrl>
@@ -37,8 +37,8 @@
   <files>
     <file src="src\NUnit.StaticExpect\bin\BuildForRelease\net452\NUnit.StaticExpect.dll" target="lib\net452"/>
     <file src="src\NUnit.StaticExpect\bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.xml" target="lib\net452"/>
-    <file src="src\NUnit.StaticExpect.NetStd\bin\Debug\netstandard1.4\NUnit.StaticExpect.dll" target="lib\netstandard1.4"/>
-    <file src="src\NUnit.StaticExpect.NetStd\bin\Debug\netstandard1.4\NUnit.StaticExpect.deps.json" target="lib\netstandard1.4"/>
+    <file src="src\NUnit.StaticExpect\bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.dll" target="lib\netstandard1.4"/>
+    <file src="src\NUnit.StaticExpect\bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.deps.json" target="lib\netstandard1.4"/>
     <file src="src\NUnit.StaticExpect\bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.xml" target="lib\netstandard1.4"/>
   </files>
 </package>
