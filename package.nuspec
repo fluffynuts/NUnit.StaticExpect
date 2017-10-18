@@ -2,20 +2,20 @@
 <package>
   <metadata>
     <id>NUnit.StaticExpect</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>NUnit.StaticExpect</title>
     <authors>Davyd McColl</authors>
     <owners/>
-    <description>&#xD;
-    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;
-    using static NUnit.StaticExpect.Expectations;&#xD;
-    // now you can use Expect()&#xD;
+    <description>&#xD;&#xD;
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;&#xD;
+    using static NUnit.StaticExpect.Expectations;&#xD;&#xD;
+    // now you can use Expect()&#xD;&#xD;
     </description>
     <releaseNotes/>
-    <summary>&#xD;
-    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;
-    using static NUnit.StaticExpect.Expectations;&#xD;
-    // now you can use Expect()&#xD;
+    <summary>&#xD;&#xD;
+    Provides a mechanism to use a static using import to get NUnit Expect() syntax, like so:&#xD;&#xD;
+    using static NUnit.StaticExpect.Expectations;&#xD;&#xD;
+    // now you can use Expect()&#xD;&#xD;
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/fluffynuts/NUnit.StaticExpect</projectUrl>
@@ -25,10 +25,10 @@
     <copyright>Copyright  2017</copyright>
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="NUnit" version="[3.7.1,]"/>
+        <dependency id="NUnit" version="[3.8.1,]"/>
       </group>
       <group targetFramework="netstandard1.4">
-        <dependency id="NUnit" version="[3.7.1,]"/>
+        <dependency id="NUnit" version="[3.8.1,]"/>
       </group>
     </dependencies>
     <references/>
