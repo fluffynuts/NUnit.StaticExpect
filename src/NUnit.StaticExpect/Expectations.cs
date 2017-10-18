@@ -6,6 +6,11 @@ using NUnit.Framework.Constraints;
 
 namespace NUnit.StaticExpect
 {
+    /// <summary>
+    /// Provides AssertionHelper-compatible syntax with a static import:
+    /// C#: using static NUnit.StaticExpect.Expectations;
+    /// VB: Imports NUnit.StaticExpect.Expectations
+    /// </summary>
     public static partial class Expectations
     {
         /// <summary>

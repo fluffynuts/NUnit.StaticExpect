@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using PeanutButter.RandomGenerators;
 using static PeanutButter.RandomGenerators.RandomValueGen;
+#pragma warning disable 618
 
 namespace NUnit.StaticExpect.Tests
 {
@@ -128,7 +129,6 @@ namespace NUnit.StaticExpect.Tests
                         AssertionHelper.Expect(check, (new AssertionHelper()).InRange(min, max)));
                     var ex2 = Assert.Throws<AssertionException>(() =>
                         Expectations.Expect(check, Expectations.InRange(min, max)));
-
                     // Assert
                     Assert.That(ex1.Message, Is.EqualTo(ex1.Message));
                     Assert.That(ex1.Message, Is.EqualTo(ex2.Message));
@@ -196,6 +196,7 @@ namespace NUnit.StaticExpect.Tests
             }
 
             // Check parameter types match (compared on names)
+            Assert.That(member, Is.Not.Null);
             Assert.That(member.GetParameters().Select(mi => mi.ParameterType.Name),
                 Is.EqualTo(sig.ParameterTypes.Select(mi => mi.Name)),
                 $"{sig.Name} implemented as pass-through property, but parameter types don't match.");

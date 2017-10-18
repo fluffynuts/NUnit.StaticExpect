@@ -17,12 +17,6 @@ public void Expect_True_IsTrue()
 }
 ```
 
-## Syntax
-Essentially, this library just provides wrappers around `Assert.That` since the syntax
-for `Assert.That` seems to match that for `AssertionHelper.Expect`, at least close enough
-that I've ripped out AssertionHelper in one project and replaced with the method above
-without issue.
-
 ## Missing something?
 If this library _is_ missing something you're used to from `AssertionHelper`, log an
 issue (:

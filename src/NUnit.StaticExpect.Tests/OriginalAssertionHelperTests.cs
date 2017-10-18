@@ -4,6 +4,9 @@ using NUnit.Framework;
 using NUnit.Framework.Constraints;
 using NUnit.TestUtilities.Comparers;
 using static NUnit.StaticExpect.Expectations;
+// ReSharper disable InconsistentNaming
+// ReSharper disable RedundantExplicitArrayCreation
+// ReSharper disable RedundantCast
 
 namespace NUnit.StaticExpect.Tests
 {

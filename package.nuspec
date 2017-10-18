@@ -35,7 +35,10 @@
     <tags/>
   </metadata>
   <files>
-    <file src="src\NUnit.StaticExpect\bin\Debug\NUnit.StaticExpect.dll" target="lib\net45"/>
+    <file src="src\NUnit.StaticExpect\bin\BuildForRelease\net452\NUnit.StaticExpect.dll" target="lib\net452"/>
+    <file src="src\NUnit.StaticExpect\bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.xml" target="lib\net452"/>
     <file src="src\NUnit.StaticExpect.NetStd\bin\Debug\netstandard1.4\NUnit.StaticExpect.dll" target="lib\netstandard1.4"/>
+    <file src="src\NUnit.StaticExpect.NetStd\bin\Debug\netstandard1.4\NUnit.StaticExpect.deps.json" target="lib\netstandard1.4"/>
+    <file src="src\NUnit.StaticExpect\bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.xml" target="lib\netstandard1.4"/>
   </files>
 </package>
