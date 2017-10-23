@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using PeanutButter.RandomGenerators;
 using static PeanutButter.RandomGenerators.RandomValueGen;
+using NUnit.Framework.Constraints;
 #pragma warning disable 618
 
 namespace NUnit.StaticExpect.Tests
@@ -18,14 +19,23 @@ namespace NUnit.StaticExpect.Tests
         [TestCaseSource(nameof(GetAssertionHelperMethodSigs))]
         public void ShouldImplementMethod_(Signature sig)
         {
-            CheckForSpecialCase(sig);
+            var rewrite = CheckForSpecialCase(sig);
 
-            var member = FindMethod(typeof(Expectations), sig);
+            var usedSig = rewrite ?? sig;
 
-            Assert.That(member, Is.Not.Null, $"{sig.Name} not found on Expectations");
+            var member = FindMethod(typeof(Expectations), usedSig);
+
+            Assert.That(member, Is.Not.Null, $"{usedSig.Name} not found on Expectations");
             Assert.That(member.ReturnType.Name,
-                Is.EqualTo(sig.ReturnType.Name),
-                $"{sig.Name}: return types don't match");
+                Is.EqualTo(usedSig.ReturnType.Name),
+                $"{usedSig.Name}: return types don't match");
+
+            // Ignore special case tests if rewritten signature matches
+            // (otherwise an unexpected signature has been encountered and will be flagged above).
+            if (rewrite != null)
+            {
+                Assert.Ignore($"Ignored by special case: {sig}");
+            }
         }
 
         [TestCaseSource(nameof(GetAssertionHelperPropertySigs))]
@@ -42,11 +52,18 @@ namespace NUnit.StaticExpect.Tests
             [TestFixture]
             public class Exactly
             {
-                public static Signature Signature =>
+                public static Signature OriginalSignature =>
                     new Signature(
                         nameof(AssertionHelper.Exactly),
-                        typeof(Int32),
-                        new[] {typeof(Int32)}
+                        typeof(ConstraintExpression),
+                        new[] { typeof(Int32) }
+                    );
+
+                public static Signature RewriteSignature =>
+                    new Signature(
+                        nameof(AssertionHelper.Exactly),
+                        typeof(ItemsConstraintExpression),
+                        new[] { typeof(Int32) }
                     );
 
                 [Test]
@@ -107,11 +124,18 @@ namespace NUnit.StaticExpect.Tests
             [TestFixture]
             public class InRange
             {
-                public static Signature Signature =>
+                public static Signature OriginalSignature =>
                     new Signature(
                         nameof(AssertionHelper.InRange),
-                        typeof(void),
-                        new[] {typeof(IComparable), typeof(IComparable)}
+                        typeof(RangeConstraint),
+                        new[] { typeof(IComparable), typeof(IComparable) }
+                    );
+
+                public static Signature RewriteSignature =>
+                    new Signature(
+                        nameof(AssertionHelper.InRange),
+                        typeof(RangeConstraint),
+                        new[] { typeof(object), typeof(object) }
                     );
 
                 [Test]
@@ -158,18 +182,37 @@ namespace NUnit.StaticExpect.Tests
             }
         }
 
-        private void CheckForSpecialCase(Signature sig)
+        private Signature CheckForSpecialCase(Signature sig)
         {
-            var ignored = typeof(SpecialCases).GetNestedTypes()
-                .Select(t => t.GetProperties(BindingFlags.Public | BindingFlags.Static))
-                .SelectMany(propInfos => propInfos)
-                .Select(pi => pi.GetValue(null) as Signature)
-                .Where(v => v != null)
-                .Any(v => v.Name == sig.Name && v.ParameterTypes.DeepEquals(sig.ParameterTypes));
-            if (ignored)
+            var specialCases = typeof(SpecialCases).GetNestedTypes();
+
+            foreach (var specialCase in specialCases)
             {
-                Assert.Ignore($"Ignored by special case: {sig}");
+                var found = specialCase.GetProperties(BindingFlags.Public | BindingFlags.Static)
+                    .Where(pi => pi.Name == "OriginalSignature")
+                    .Select(pi => pi.GetValue(null) as Signature)
+                    .Where(v => v != null)
+                    .Any(v => v.Name == sig.Name && v.ParameterTypes.DeepEquals(sig.ParameterTypes));
+
+                if (found)
+                {
+                    var rewrite = specialCase.GetProperties(BindingFlags.Public | BindingFlags.Static)
+                        .Where(pi => pi.Name == "RewriteSignature")
+                        .Select(pi => pi.GetValue(null) as Signature)
+                        .SingleOrDefault(v => v != null);
+
+                    if (rewrite != null)
+                    {
+                        return rewrite;
+                    }
+                    else
+                    {
+                        Assert.Fail($"Special case: {sig} does not hold a valid rewrite signature");
+                    }
+                }
             }
+
+            return null;
         }
 
         private MethodInfo FindMethod(Type type, Signature sig)
