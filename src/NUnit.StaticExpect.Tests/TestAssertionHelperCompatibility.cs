@@ -8,6 +8,7 @@ using System.Reflection;
 using PeanutButter.RandomGenerators;
 using static PeanutButter.RandomGenerators.RandomValueGen;
 using NUnit.Framework.Constraints;
+
 #pragma warning disable 618
 
 namespace NUnit.StaticExpect.Tests
@@ -26,7 +27,8 @@ namespace NUnit.StaticExpect.Tests
             var member = FindMethod(typeof(Expectations), usedSig);
 
             Assert.That(member, Is.Not.Null, $"{usedSig.Name} not found on Expectations");
-            Assert.That(member.ReturnType.Name,
+            Assert.That(
+                member.ReturnType.Name,
                 Is.EqualTo(usedSig.ReturnType.Name),
                 $"{usedSig.Name}: return types don't match");
 
@@ -50,20 +52,71 @@ namespace NUnit.StaticExpect.Tests
         public class SpecialCases
         {
             [TestFixture]
+            public class Member
+            {
+                [Test]
+                public void ShouldPassOnTheSameLogic()
+                {
+                    // Arrange
+                    var collection = new[] {1, 2, 3};
+                    // Pre-assert
+                    // Act
+                    Assert.That(
+                        () => AssertionHelper.Expect(collection, Has.Member(1)),
+                        Throws.Nothing
+                    );
+                    Assert.That(
+                        () => Expectations.Expect(collection, Has.Member(1)),
+                        Throws.Nothing
+                    );
+                    // Assert
+                }
+
+                [Test]
+                public void ShouldFailSimilarly()
+                {
+                    // Arrange
+                    var collection = new[] {1, 2, 3};
+                    // Pre-assert
+                    // Act
+                    Assert.That(
+                        () => AssertionHelper.Expect(collection, Has.Member(4)),
+                        Throws.Exception.InstanceOf<AssertionException>());
+                    Assert.That(
+                        () => Expectations.Expect(collection, Has.Member(4)),
+                        Throws.Exception.InstanceOf<AssertionException>());
+                    // Assert
+                }
+
+                public static Signature OriginalSignature =>
+                    new Signature(
+                        nameof(AssertionHelper.Contains),
+                        typeof(EqualConstraint),
+                        new[] { typeof(object) }
+                   );
+                public static Signature RewriteSignature =>
+                    new Signature(
+                        nameof(AssertionHelper.Contains),
+                        typeof(EqualConstraint),
+                        new[] { typeof(object) }
+                   );
+            }
+
+            [TestFixture]
             public class Exactly
             {
                 public static Signature OriginalSignature =>
                     new Signature(
                         nameof(AssertionHelper.Exactly),
                         typeof(ConstraintExpression),
-                        new[] { typeof(Int32) }
+                        new[] {typeof(Int32)}
                     );
 
                 public static Signature RewriteSignature =>
                     new Signature(
                         nameof(AssertionHelper.Exactly),
                         typeof(ItemsConstraintExpression),
-                        new[] { typeof(Int32) }
+                        new[] {typeof(Int32)}
                     );
 
                 [Test]
@@ -101,7 +154,8 @@ namespace NUnit.StaticExpect.Tests
                     // Pre-Assert
 
                     // Act
-                    Assert.That(() =>
+                    Assert.That(
+                        () =>
                             AssertionHelper.Expect(
                                 collection,
                                 AssertionHelper.Exactly(1).EqualTo(seek)
@@ -109,7 +163,8 @@ namespace NUnit.StaticExpect.Tests
                         Throws.Nothing
                     );
 
-                    Assert.That(() =>
+                    Assert.That(
+                        () =>
                             Expectations.Expect(
                                 collection,
                                 Expectations.Exactly(1).EqualTo(seek)
@@ -128,14 +183,14 @@ namespace NUnit.StaticExpect.Tests
                     new Signature(
                         nameof(AssertionHelper.InRange),
                         typeof(RangeConstraint),
-                        new[] { typeof(IComparable), typeof(IComparable) }
+                        new[] {typeof(IComparable), typeof(IComparable)}
                     );
 
                 public static Signature RewriteSignature =>
                     new Signature(
                         nameof(AssertionHelper.InRange),
                         typeof(RangeConstraint),
-                        new[] { typeof(object), typeof(object) }
+                        new[] {typeof(object), typeof(object)}
                     );
 
                 [Test]
@@ -149,10 +204,12 @@ namespace NUnit.StaticExpect.Tests
                     // Pre-Assert
 
                     // Act
-                    var ex1 = Assert.Throws<AssertionException>(() =>
-                        AssertionHelper.Expect(check, (new AssertionHelper()).InRange(min, max)));
-                    var ex2 = Assert.Throws<AssertionException>(() =>
-                        Expectations.Expect(check, Expectations.InRange(min, max)));
+                    var ex1 = Assert.Throws<AssertionException>(
+                        () =>
+                            AssertionHelper.Expect(check, (new AssertionHelper()).InRange(min, max)));
+                    var ex2 = Assert.Throws<AssertionException>(
+                        () =>
+                            Expectations.Expect(check, Expectations.InRange(min, max)));
                     // Assert
                     Assert.That(ex1.Message, Is.EqualTo(ex1.Message));
                     Assert.That(ex1.Message, Is.EqualTo(ex2.Message));
@@ -169,10 +226,12 @@ namespace NUnit.StaticExpect.Tests
                     // Pre-Assert
 
                     // Act
-                    Assert.That(() =>
+                    Assert.That(
+                        () =>
                             AssertionHelper.Expect(check, (new AssertionHelper()).InRange(min, max)),
                         Throws.Nothing);
-                    Assert.That(() =>
+                    Assert.That(
+                        () =>
                             Expectations.Expect(check, Expectations.InRange(min, max)),
                         Throws.Nothing);
 
@@ -240,7 +299,8 @@ namespace NUnit.StaticExpect.Tests
 
             // Check parameter types match (compared on names)
             Assert.That(member, Is.Not.Null);
-            Assert.That(member.GetParameters().Select(mi => mi.ParameterType.Name),
+            Assert.That(
+                member.GetParameters().Select(mi => mi.ParameterType.Name),
                 Is.EqualTo(sig.ParameterTypes.Select(mi => mi.Name)),
                 $"{sig.Name} implemented as pass-through property, but parameter types don't match.");
             return member;
@@ -268,11 +328,12 @@ namespace NUnit.StaticExpect.Tests
                     BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Instance)
                 .Where(mi => !mi.Name.StartsWith("get_"))
                 .Where(mi => !mi.Name.StartsWith("set_"))
-                .Select(o => new Signature(
-                    o.Name,
-                    o.ReturnType,
-                    o.GetParameters().Select(pi => pi.ParameterType).ToArray()
-                ));
+                .Select(
+                    o => new Signature(
+                        o.Name,
+                        o.ReturnType,
+                        o.GetParameters().Select(pi => pi.ParameterType).ToArray()
+                    ));
 
             return sigs;
         }
@@ -281,11 +342,12 @@ namespace NUnit.StaticExpect.Tests
         {
             var properties = type.GetProperties(
                     BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Instance)
-                .Select(pi => new Signature(
-                    pi.Name,
-                    pi.PropertyType,
-                    pi.GetIndexParameters().Select(pr => pr.ParameterType).ToArray()
-                ));
+                .Select(
+                    pi => new Signature(
+                        pi.Name,
+                        pi.PropertyType,
+                        pi.GetIndexParameters().Select(pr => pr.ParameterType).ToArray()
+                    ));
 
             return properties;
         }
