@@ -8,6 +8,7 @@ const
 
 gulp.task("release", [ "test-dotnet" ], (done) => {
   runSequence(
+    "ensure-nunit-dependency-version",
     "increment-package-version",
     "pack",
     "push",

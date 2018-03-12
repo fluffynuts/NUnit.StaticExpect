@@ -4,7 +4,7 @@ const
   editXml = require("gulp-edit-xml");
 
 gulp.task("increment-package-version", () => {
-  gulp.src("Package.nuspec")
+  return gulp.src("Package.nuspec")
     .pipe(editXml(xml => {
       const 
         node = xml.package.metadata[0].version,
