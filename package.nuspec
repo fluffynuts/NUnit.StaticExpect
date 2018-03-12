@@ -25,10 +25,10 @@
     <copyright>Copyright  2017</copyright>
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="NUnit" version="[3.8.1,]"/>
+        <dependency id="NUnit" version="[3.8.1,4)"/>
       </group>
       <group targetFramework="netstandard1.4">
-        <dependency id="NUnit" version="[3.8.1,]"/>
+        <dependency id="NUnit" version="[3.8.1,4)"/>
       </group>
     </dependencies>
     <references/>
