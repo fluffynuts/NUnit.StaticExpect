@@ -10,6 +10,12 @@
     <DocumentationFile>bin\Debug\netstandard1.4\NUnit.StaticExpect.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="nunit" Version="3.9.0" />
+    <PackageReference Include="microsoft.netcore.portable.compatibility" Version="1.0.1" />
+    <PackageReference Include="nunit" Version="3.10.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\..\Users\davyd.mccoll\.nuget\packages\nunit\3.10.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

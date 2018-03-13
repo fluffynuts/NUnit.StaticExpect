@@ -139,6 +139,12 @@ namespace NUnit.StaticExpect
             Is.AtLeast;
 
         /// <summary>
+        ///     Returns a constraint that tests whether the provided values are 
+        /// </summary>
+        public static Func<object[], AnyOfConstraint> AnyOf =>
+            Is.AnyOf;
+
+        /// <summary>
         ///     Returns a constraint that tests whether the actual value is less than or equal
         ///     to the supplied argument
         /// </summary>
