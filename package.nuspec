@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>NUnit.StaticExpect</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>NUnit.StaticExpect</title>
     <authors>Davyd McColl</authors>
     <owners/>
@@ -25,10 +25,10 @@
     <copyright>Copyright  2017</copyright>
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="NUnit" version="[3.9.0,4)"/>
+        <dependency id="NUnit" version="[3.10.1,4)"/>
       </group>
       <group targetFramework="netstandard1.4">
-        <dependency id="NUnit" version="[3.9.0,4)"/>
+        <dependency id="NUnit" version="[3.10.1,4)"/>
       </group>
     </dependencies>
     <references/>
