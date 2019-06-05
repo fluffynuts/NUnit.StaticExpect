@@ -1,3 +1,14 @@
+# DEPRECATED
+Please consider https://github.com/fluffynuts/NExpect as an alternative,
+better in many respects:
+- more fluent syntax
+- easier to extend
+- deep equality checking
+- existing extension packages for NSubstitute and AspNetCore route / verb testing
+- active development and usage -- I use NExpect daily
+
+... on with the prior README ...
+
 # NUnit.StaticExpect
 Some users prefer a shorter form of assertion than is given by 
 NUnit's `Assert.That`. If you statically import `NUnit.StaticExpect`, 
