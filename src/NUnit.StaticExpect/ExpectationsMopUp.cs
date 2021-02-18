@@ -93,10 +93,12 @@ namespace NUnit.StaticExpect
         /// </summary>
         /// <param name="original">The original collection</param>
         /// <returns></returns>
+#pragma warning disable 618
         public static ListMapper Map(ICollection original)
         {
             return new ListMapper(original);
         }
+#pragma warning restore 618
 
         /// <summary>
         /// Returns a constraint that succeeds if the actual

@@ -3,8 +3,8 @@
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <Configurations>Debug;Release;BuildForRelease</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='BuildForRelease|netstandard1.4|AnyCPU'">
-    <DocumentationFile>bin\BuildForRelease\netstandard1.4\NUnit.StaticExpect.xml</DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='BuildForRelease|netstandard2.0|AnyCPU'">
+    <DocumentationFile>bin\BuildForRelease\netstandard2.0\NUnit.StaticExpect.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.4|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard1.4\NUnit.StaticExpect.xml</DocumentationFile>
