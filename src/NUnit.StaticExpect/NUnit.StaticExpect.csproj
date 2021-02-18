@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.4;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <Configurations>Debug;Release;BuildForRelease</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='BuildForRelease|netstandard1.4|AnyCPU'">
@@ -11,11 +11,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="microsoft.netcore.portable.compatibility" Version="1.0.1" />
-    <PackageReference Include="nunit" Version="3.10.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\..\Users\davyd.mccoll\.nuget\packages\nunit\3.10.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
+    <PackageReference Include="nunit" Version="3.13.1" />
   </ItemGroup>
 </Project>
