@@ -298,3 +298,4 @@ tools
 npm-debug.log*
 buildreports
 build-tools
+*.swp
