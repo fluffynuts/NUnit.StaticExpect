@@ -4,6 +4,7 @@ using NUnit.Framework;
 using static NUnit.StaticExpect.Expectations;
 using static PeanutButter.RandomGenerators.RandomValueGen;
 using System.Linq;
+using System.Text.RegularExpressions;
 using PeanutButter.Utils;
 
 namespace NUnit.StaticExpect.Tests
@@ -418,6 +419,25 @@ namespace NUnit.StaticExpect.Tests
 
                 // Assert
             }
+            
+            [Test]
+            public void ShouldRedirectMethodMatchForRegex()
+            {
+                // Arrange
+                var name = "Match";
+                var src = typeof(Does).GetMethods()
+                    .FirstOrDefault(mi => mi.Name == nameof(Does.Match) &&
+                        mi.GetParameters().First().ParameterType == typeof(string));
+                var dest = GetRedirectedMethodFor(typeof(Expectations), name);
+
+                // Pre-Assert
+
+                // Act
+                Assert.That(dest, Is.Not.Null, () => $"{name} missing on Expectations");
+                Assert.That(dest, Is.EqualTo(src), () => $"{name} is does not pass-through to Is");
+
+                // Assert
+            }
 
             [TestCaseSource(nameof(GetAllStaticPropertiesOnDoes))]
             public void ShouldRedirectProperty_(string name)
@@ -440,7 +460,8 @@ namespace NUnit.StaticExpect.Tests
                 return GetAllStaticMethodsOn(typeof(Does))
                     .Except(new[]
                     {
-                        "Contain"    // special case
+                        "Match",
+                        "Contain"    // special cases
                     })
                     .ToArray();
             }
